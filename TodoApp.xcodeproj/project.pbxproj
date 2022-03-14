@@ -12,6 +12,8 @@
 		B33FF1C927DF4C4000B7F898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33FF1C827DF4C4000B7F898 /* Assets.xcassets */; };
 		B33FF1CC27DF4C4000B7F898 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33FF1CB27DF4C4000B7F898 /* Preview Assets.xcassets */; };
 		B33FF1D527DF83FA00B7F898 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B33FF1D427DF83FA00B7F898 /* GoogleService-Info.plist */; };
+		B33FF1D827DF849B00B7F898 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B33FF1D727DF849B00B7F898 /* FirebaseAnalytics */; };
+		B33FF1DA27DF849B00B7F898 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B33FF1D927DF849B00B7F898 /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B33FF1D827DF849B00B7F898 /* FirebaseAnalytics in Frameworks */,
+				B33FF1DA27DF849B00B7F898 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +90,10 @@
 			dependencies = (
 			);
 			name = TodoApp;
+			packageProductDependencies = (
+				B33FF1D727DF849B00B7F898 /* FirebaseAnalytics */,
+				B33FF1D927DF849B00B7F898 /* FirebaseFirestore */,
+			);
 			productName = TodoApp;
 			productReference = B33FF1C127DF4C3E00B7F898 /* TodoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +122,9 @@
 				Base,
 			);
 			mainGroup = B33FF1B827DF4C3E00B7F898;
+			packageReferences = (
+				B33FF1D627DF849B00B7F898 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B33FF1C227DF4C3E00B7F898 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -273,6 +284,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 5HALMU866W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -301,6 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 5HALMU866W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -343,6 +356,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B33FF1D627DF849B00B7F898 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B33FF1D727DF849B00B7F898 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B33FF1D627DF849B00B7F898 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B33FF1D927DF849B00B7F898 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B33FF1D627DF849B00B7F898 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B33FF1B927DF4C3E00B7F898 /* Project object */;
 }
