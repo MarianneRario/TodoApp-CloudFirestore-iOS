@@ -14,6 +14,29 @@ class ViewModel: ObservableObject {
     // Get a reference to the db
     let db = Firestore.firestore()
     
+    // Function to delete data from db
+    func deleteData(todoToDelete: Todo){
+        
+        // Specify the document to delete
+        db.collection("todos").document(todoToDelete.id).delete { error in
+            
+            // Check for errors
+            if error == nil {
+                
+                // Update the UI from the main thread
+                DispatchQueue.main.async {
+                    
+                    // Remove the todo that was just deleted
+                    self.list.removeAll { todo in
+                        // It's going to check each of the todo id from the once that was deleted and if it is a match, remove it from the UI
+                        return todo.id == todoToDelete.id
+                    }
+                }
+            }
+        }
+    }
+    
+    
     // Function that will add data to the db
     func addData(name: String, notes: String){
         

@@ -20,30 +20,41 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
+            
             List (model.list){ item in
-                Text(item.name)
+                HStack {
+                    Text(item.name)
+                    Spacer()
+                    Button {
+                        // Delete todo
+                        model.deleteData(todoToDelete: item)
+                    } label: {
+                        Image(systemName: "minus.circle")
+                    }
+                }
             }
             
             Divider()
             
-            // $ -> for binding purposes
-            // This textfields will be used for adding data in db
-            TextField("Name", text: $name)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("Notes", text: $notes)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            Button {
-                // Call add data
-                model.addData(name: name, notes: notes)
+            VStack(spacing: 5) {
+                // $ -> for binding purposes
+                // This textfields will be used for adding data in db
+                TextField("Name", text: $name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Notes", text: $notes)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 
-                // Clear the text fields
-                name = ""
-                notes = ""
-            } label: {
-                Text("Add todo item")
-            }
-
+                Button {
+                    // Call add data
+                    model.addData(name: name, notes: notes)
+                    
+                    // Clear the text fields
+                    name = ""
+                    notes = ""
+                } label: {
+                    Text("Add todo item")
+                }
+            } .padding()
         }
         
     }
