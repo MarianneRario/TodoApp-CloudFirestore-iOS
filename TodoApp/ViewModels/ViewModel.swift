@@ -30,25 +30,19 @@ class ViewModel: ObservableObject {
                     
                     // Make this task run in the foreground by using DispatchQueue (run in the main thread)
                     // Update the list property in the main thread since it causes UI changes
-//                    DispatchQueue.main.async {
-//                        // Get all the documents and create Todos
-//                        self.list = snapshot.documents.map { doc in
-//
-//                            // Create a Todo item for each document returned
-//                            return Todo(id: doc.documentID,
-//                                        // cast these as a String
-//                                        // if it can't find ["name"] && ["notes"], put an empty string
-//                                        name: doc["name"] as? String ?? "",
-//                                        notes: doc["notes"] as? String ?? "")
-//                        }
-//                    }
-                    self.list = snapshot.documents.map { doc in
-                        return Todo(id: doc.documentID,
-                                    // cast these as a String
-                                    // if it can't find ["name"] && ["notes"], put an empty string
-                                    name: doc["name"] as? String ?? "",
-                                    notes: doc["notes"] as? String ?? "")
+                    DispatchQueue.main.async {
+                        // Get all the documents and create Todos
+                        self.list = snapshot.documents.map { doc in
+                            
+                            // Create a Todo item for each document returned
+                            return Todo(id: doc.documentID,
+                                        // cast these as a String
+                                        // if it can't find ["name"] && ["notes"], put an empty string
+                                        name: doc["name"] as? String ?? "",
+                                        notes: doc["notes"] as? String ?? "")
+                        }
                     }
+
                 }
             } else {
                 // Handle the error
