@@ -8,6 +8,19 @@
 import SwiftUI
 import Firebase
 
+// Customize button style
+struct AddTodoBtn: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+        .padding(10)
+        .buttonStyle(BorderedButtonStyle())
+        .background(Color.black)
+        .foregroundColor(.white)
+        .clipShape(Capsule())
+        
+    }
+}
+
 struct ContentView: View {
     
     // Initialize ViewModel
@@ -25,17 +38,29 @@ struct ContentView: View {
                 HStack {
                     Text(item.name)
                     Spacer()
+                    
+                    Button {
+                        print("hello")
+                    } label: {
+                        Image(systemName: "pencil")
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    
+                    
                     Button {
                         // Delete todo
                         model.deleteData(todoToDelete: item)
                     } label: {
                         Image(systemName: "minus.circle")
                     }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .foregroundColor(.red)
                 }
             }
             
             Divider()
             
+            // Add button
             VStack(spacing: 5) {
                 // $ -> for binding purposes
                 // This textfields will be used for adding data in db
@@ -43,6 +68,7 @@ struct ContentView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 TextField("Notes", text: $notes)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.bottom)
                 
                 Button {
                     // Call add data
@@ -54,6 +80,7 @@ struct ContentView: View {
                 } label: {
                     Text("Add todo item")
                 }
+                .buttonStyle(AddTodoBtn())
             } .padding()
         }
         
