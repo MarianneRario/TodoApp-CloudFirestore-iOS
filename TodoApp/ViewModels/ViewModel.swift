@@ -11,11 +11,30 @@ import Firebase
 class ViewModel: ObservableObject {
     @Published var list = [Todo]() //array of Todo from Models/Todo
     
+    // Get a reference to the db
+    let db = Firestore.firestore()
+    
+    // Function that will add data to the db
+    func addData(name: String, notes: String){
+        
+        // Add document to the collection
+        db.collection("todos").addDocument(data: ["name": name, "notes": notes]) { error in
+            
+            // Check for errors
+            if error == nil {
+                
+                // Call .getData() again to retrieve latest data
+                self.getData()
+                
+            } else {
+                // Handle the error
+            }
+        }
+        
+    }
+    
     // Function that will fetch a data from our db
     func getData(){
-        
-        // Get a reference to the database
-        let db = Firestore.firestore()
         
         // Read the documents at a specific path
         // snapshot -> contains the document in the db
@@ -46,6 +65,7 @@ class ViewModel: ObservableObject {
                 }
             } else {
                 // Handle the error
+                print(error?.localizedDescription ?? "")
             }
         }
         
