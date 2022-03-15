@@ -10,19 +10,24 @@ import Firebase
 
 struct ContentView: View {
     
-    //configure db
-    init(){
-        FirebaseApp.configure()
-    }
+    // Initialize ViewModel
+    @ObservedObject var model = ViewModel()
     
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List (model.list){ item in
+            Text(item.name)
+        }
+    }
+    
+    // Initialization of this view
+    init(){
+        model.getData()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+
     }
 }
