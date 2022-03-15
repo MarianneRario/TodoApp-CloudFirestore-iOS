@@ -31,59 +31,64 @@ struct ContentView: View {
     @State var notes: String = ""
     
     var body: some View {
-        
-        VStack {
-            
-            List (model.list){ item in
-                HStack {
-                    Text(item.name)
-                    Spacer()
-                    
-                    Button {
-                        print("hello")
-                    } label: {
-                        Image(systemName: "pencil")
+        NavigationView {
+            VStack {
+                List (model.list){ item in
+                    HStack {
+                        NavigationLink(destination: Text(item.notes)) {
+                            Text(item.name)
+                        }
+                        
+                        Spacer()
+                        
+                        Button {
+                            print("hello")
+                        } label: {
+                            Image(systemName: "pencil")
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                        
+                        
+                        Button {
+                            // Delete todo
+                            model.deleteData(todoToDelete: item)
+                        } label: {
+                            Image(systemName: "minus.circle")
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                        .foregroundColor(.red)
                     }
-                    .buttonStyle(BorderlessButtonStyle())
-                    
-                    
-                    Button {
-                        // Delete todo
-                        model.deleteData(todoToDelete: item)
-                    } label: {
-                        Image(systemName: "minus.circle")
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                    .foregroundColor(.red)
                 }
-            }
-            
-            Divider()
-            
-            // Add button
-            VStack(spacing: 5) {
-                // $ -> for binding purposes
-                // This textfields will be used for adding data in db
-                TextField("Name", text: $name)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                TextField("Notes", text: $notes)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.bottom)
                 
-                Button {
-                    // Call add data
-                    model.addData(name: name, notes: notes)
+                Divider()
+                
+                // Add button
+                VStack(spacing: 5) {
+                    // $ -> for binding purposes
+                    // This textfields will be used for adding data in db
+                    TextField("Name", text: $name)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Notes", text: $notes)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.bottom)
                     
-                    // Clear the text fields
-                    name = ""
-                    notes = ""
-                } label: {
-                    Text("Add todo item")
-                }
-                .buttonStyle(AddTodoBtn())
-            } .padding()
+                    Button {
+                        // Call add data
+                        model.addData(name: name, notes: notes)
+                        
+                        // Clear the text fields
+                        name = ""
+                        notes = ""
+                    } label: {
+                        Text("Add todo item")
+                    }
+                    .buttonStyle(AddTodoBtn())
+                } .padding()
+                
+                // insert navigation properties here
+                    .navigationTitle("Todo List")
+            }
         }
-        
     }
     
     // Initialization of this view
