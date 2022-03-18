@@ -16,6 +16,7 @@
 		B33FF1DA27DF849B00B7F898 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B33FF1D927DF849B00B7F898 /* FirebaseFirestore */; };
 		B3C8137427DFA32B00DA2854 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C8137327DFA32B00DA2854 /* ViewModel.swift */; };
 		B3C8137727DFA50F00DA2854 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C8137627DFA50F00DA2854 /* Todo.swift */; };
+		B3C8137927E0C4AF00DA2854 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C8137827E0C4AF00DA2854 /* NotesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		B33FF1D427DF83FA00B7F898 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3C8137327DFA32B00DA2854 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B3C8137627DFA50F00DA2854 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		B3C8137827E0C4AF00DA2854 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				B33FF1C627DF4C3E00B7F898 /* ContentView.swift */,
+				B3C8137827E0C4AF00DA2854 /* NotesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				B33FF1C727DF4C3E00B7F898 /* ContentView.swift in Sources */,
 				B3C8137427DFA32B00DA2854 /* ViewModel.swift in Sources */,
+				B3C8137927E0C4AF00DA2854 /* NotesView.swift in Sources */,
 				B33FF1C527DF4C3E00B7F898 /* TodoAppApp.swift in Sources */,
 				B3C8137727DFA50F00DA2854 /* Todo.swift in Sources */,
 			);
